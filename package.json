@@ -1,0 +1,76 @@
+{
+  "name": "cute-baby",
+  "displayName": "召唤咱家小宝贝",
+  "description": "召唤咱家小宝贝",
+  "version": "1.0.0",
+  "icon": "images/logo.png",
+  "publisher": "Joker",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.32.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "cute_baby"
+  ],
+  "activationEvents": [
+    "onCommand:encourager.showEncourage"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "encourager.showEncourage",
+        "title": "❤ 召唤咱家小宝贝",
+        "category": "call"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "encourager.showEncourage",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "召唤咱家小宝贝",
+      "properties": {
+        "encourager.yourName": {
+          "type": "string",
+          "default": "小可爱",
+          "description": "称呼"
+        },
+        "encourager.character": {
+          "type": "number",
+          "default": 1,
+          "description": "类型"
+        },
+        "encourager.newCharacters": {
+          "type": "array",
+          "default": [],
+          "description": "自定义"
+        },
+        "encourager.encouragePageDelay": {
+          "type": "number",
+          "default": 6,
+          "description": "鼓励页面的停留时间（秒），超时后会自动关闭；若设置为 <=0 的数则不自动关闭"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.1",
+    "vscode": "^1.1.28",
+    "eslint": "^5.13.0",
+    "@types/node": "^10.12.21",
+    "@types/mocha": "^2.2.42"
+  }
+}
